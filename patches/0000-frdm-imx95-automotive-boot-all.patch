@@ -1,0 +1,69 @@
+diff --git a/common/tools/uuu_imx_android_flash.sh b/common/tools/uuu_imx_android_flash.sh
+index c70d1d26..1ef693f1 100755
+--- a/common/tools/uuu_imx_android_flash.sh
++++ b/common/tools/uuu_imx_android_flash.sh
+@@ -457,11 +457,11 @@ randome_part=
+ # images when flash another set of images can not be detect early with this scenario.
+ imx8qxp_uboot_feature=(mek-uuu secure-unlock c0 mek-c0-uuu)
+ imx8qm_uboot_feature=(mek-uuu secure-unlock md)
+-imx95_uboot_feature=(evk-uuu secure-unlock verdin verdin-uuu)
++imx95_uboot_feature=(evk-uuu secure-unlock verdin verdin-uuu 15x15-frdm)
+ 
+ imx8qxp_dtb_feature=(sof)
+ imx8qm_dtb_feature=(md sof revd md-revd sof-revd)
+-imx95_dtb_feature=(ap1302 lvds0 lvds0-ap1302 mipi-lvds1 mipi-lvds1-ap1302 verdin verdin-ap1302 verdin-adv7535 verdin-adv7535-ap1302)
++imx95_dtb_feature=(ap1302 lvds0 lvds0-ap1302 mipi-lvds1 mipi-lvds1-ap1302 verdin verdin-ap1302 verdin-adv7535 verdin-adv7535-ap1302 15x15-frdm)
+ 
+ tmp_files_before_uuu=()
+ tmp_files_in_uuu=()
+diff --git a/imx9/evk_95/AndroidUboot.sh b/imx9/evk_95/AndroidUboot.sh
+index da8d64d5..1c811d0f 100644
+--- a/imx9/evk_95/AndroidUboot.sh
++++ b/imx9/evk_95/AndroidUboot.sh
+@@ -66,11 +66,8 @@ fi
+ 	echo Building imx-oei ...
+ 	make -C ${BOARD_OEI_PATH} really-clean
+ 	make -C ${BOARD_OEI_PATH} OEI_CROSS_COMPILE="${SM_OEI_CROSS_COMPILE}" board=mx95lp5 r=b0 oei=tcm d=1 all 1>/dev/null || exit 1
+-if echo "$2" | grep -q "15x15" ; then
+ 	make -C ${BOARD_OEI_PATH} OEI_CROSS_COMPILE="${SM_OEI_CROSS_COMPILE}" board=mx95lp4x-15 r=b0 oei=ddr d=1 all 1>/dev/null || exit 1
+-else
+ 	make -C ${BOARD_OEI_PATH} OEI_CROSS_COMPILE="${SM_OEI_CROSS_COMPILE}" board=mx95lp5 r=b0 oei=ddr d=1 all 1>/dev/null || exit 1
+-fi
+ 
+ if [ "${PRODUCT_IMX_CAR_M7}" = "true" ]; then
+ 	echo Building Cortex-M7 Car firmware ...
+diff --git a/imx9/evk_95/BoardConfig.mk b/imx9/evk_95/BoardConfig.mk
+index e2fe691b..656918b5 100644
+--- a/imx9/evk_95/BoardConfig.mk
++++ b/imx9/evk_95/BoardConfig.mk
+@@ -174,6 +174,7 @@ ifeq ($(PRODUCT_IMX_CAR),true)
+     TARGET_BOARD_DTS_CONFIG += imx95-verdin:imx95-19x19-verdin-car2-lt8912-ap1302.dtb
+     TARGET_BOARD_DTS_CONFIG += imx95-verdin-adv7535:imx95-19x19-verdin-car2-adv7535.dtb
+     TARGET_BOARD_DTS_CONFIG += imx95-verdin-adv7535-ap1302:imx95-19x19-verdin-car2-adv7535-ap1302.dtb
++    TARGET_BOARD_DTS_CONFIG += imx95-15x15-frdm:imx95-15x15-frdm.dtb
+   endif #PRODUCT_IMX_CAR_M7
+ else
+   TARGET_BOARD_DTS_CONFIG := imx95:imx95-19x19-evk-os08a20-isp-adv7535.dtb
+diff --git a/imx9/evk_95/UbootKernelBoardConfig.mk b/imx9/evk_95/UbootKernelBoardConfig.mk
+index 6a326a23..0b622996 100644
+--- a/imx9/evk_95/UbootKernelBoardConfig.mk
++++ b/imx9/evk_95/UbootKernelBoardConfig.mk
+@@ -11,6 +11,7 @@ ifeq ($(PRODUCT_IMX_CAR),true)
+     TARGET_BOOTLOADER_CONFIG := imx95:imx95_19x19_evk_androidauto2_trusty_defconfig
+     TARGET_BOOTLOADER_CONFIG += imx95-secure-unlock:imx95_19x19_evk_androidauto2_trusty_secure_unlock_defconfig
+     TARGET_BOOTLOADER_CONFIG += imx95-verdin:imx95_19x19_verdin_androidauto2_trusty_defconfig
++    TARGET_BOOTLOADER_CONFIG += imx95-15x15-frdm:imx95_15x15_frdm_android_trusty_dual_defconfig
+   endif #PRODUCT_IMX_CAR_M7
+ else
+   # u-boot target
+@@ -36,9 +37,9 @@ endif #PRODUCT_IMX_CAR
+ 
+ TARGET_BOOTLOADER_CONFIG += imx95-evk-uuu:imx95_19x19_evk_android_uuu_defconfig
+ TARGET_BOOTLOADER_CONFIG += imx95-verdin-uuu:imx95_19x19_verdin_android_uuu_defconfig
++TARGET_BOOTLOADER_CONFIG += imx95-15x15-frdm-uuu:imx95_15x15_frdm_android_uuu_defconfig
+ ifneq ($(PRODUCT_IMX_CAR),true)
+   TARGET_BOOTLOADER_CONFIG += imx95-15x15-evk-uuu:imx95_15x15_evk_android_uuu_defconfig
+-  TARGET_BOOTLOADER_CONFIG += imx95-15x15-frdm-uuu:imx95_15x15_frdm_android_uuu_defconfig
+ endif
+ 
+ ifeq ($(PRODUCT_IMX_CAR),true)

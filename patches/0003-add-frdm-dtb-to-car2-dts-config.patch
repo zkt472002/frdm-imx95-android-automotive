@@ -1,0 +1,12 @@
+diff --git a/imx9/evk_95/BoardConfig.mk b/imx9/evk_95/BoardConfig.mk
+index e2fe691b..656918b5 100644
+--- a/imx9/evk_95/BoardConfig.mk
++++ b/imx9/evk_95/BoardConfig.mk
+@@ -174,6 +174,7 @@ ifeq ($(PRODUCT_IMX_CAR),true)
+     TARGET_BOARD_DTS_CONFIG += imx95-verdin:imx95-19x19-verdin-car2-lt8912-ap1302.dtb
+     TARGET_BOARD_DTS_CONFIG += imx95-verdin-adv7535:imx95-19x19-verdin-car2-adv7535.dtb
+     TARGET_BOARD_DTS_CONFIG += imx95-verdin-adv7535-ap1302:imx95-19x19-verdin-car2-adv7535-ap1302.dtb
++    TARGET_BOARD_DTS_CONFIG += imx95-15x15-frdm:imx95-15x15-frdm.dtb
+   endif #PRODUCT_IMX_CAR_M7
+ else
+   TARGET_BOARD_DTS_CONFIG := imx95:imx95-19x19-evk-os08a20-isp-adv7535.dtb

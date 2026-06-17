@@ -1,0 +1,23 @@
+diff --git a/imx9/evk_95/UbootKernelBoardConfig.mk b/imx9/evk_95/UbootKernelBoardConfig.mk
+index 6a326a23..0b622996 100644
+--- a/imx9/evk_95/UbootKernelBoardConfig.mk
++++ b/imx9/evk_95/UbootKernelBoardConfig.mk
+@@ -11,6 +11,7 @@ ifeq ($(PRODUCT_IMX_CAR),true)
+     TARGET_BOOTLOADER_CONFIG := imx95:imx95_19x19_evk_androidauto2_trusty_defconfig
+     TARGET_BOOTLOADER_CONFIG += imx95-secure-unlock:imx95_19x19_evk_androidauto2_trusty_secure_unlock_defconfig
+     TARGET_BOOTLOADER_CONFIG += imx95-verdin:imx95_19x19_verdin_androidauto2_trusty_defconfig
++    TARGET_BOOTLOADER_CONFIG += imx95-15x15-frdm:imx95_15x15_frdm_android_trusty_dual_defconfig
+   endif #PRODUCT_IMX_CAR_M7
+ else
+   # u-boot target
+@@ -36,9 +37,9 @@ endif #PRODUCT_IMX_CAR
+ 
+ TARGET_BOOTLOADER_CONFIG += imx95-evk-uuu:imx95_19x19_evk_android_uuu_defconfig
+ TARGET_BOOTLOADER_CONFIG += imx95-verdin-uuu:imx95_19x19_verdin_android_uuu_defconfig
++TARGET_BOOTLOADER_CONFIG += imx95-15x15-frdm-uuu:imx95_15x15_frdm_android_uuu_defconfig
+ ifneq ($(PRODUCT_IMX_CAR),true)
+   TARGET_BOOTLOADER_CONFIG += imx95-15x15-evk-uuu:imx95_15x15_evk_android_uuu_defconfig
+-  TARGET_BOOTLOADER_CONFIG += imx95-15x15-frdm-uuu:imx95_15x15_frdm_android_uuu_defconfig
+ endif
+ 
+ ifeq ($(PRODUCT_IMX_CAR),true)
