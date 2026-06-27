@@ -7,7 +7,14 @@ Created: 2026-06-17
 
 # Android Automotive OS on FRDM-IMX95
 
-*by Nguyen Minh Tien · [embeddedlinux.blog](https://embeddedlinux.blog/) · 2026-06-17*
+---
+
+## Author
+
+**Nguyen Minh Tien** — <zizuzacker@gmail.com>
+Blog: <https://embeddedlinux.blog/> · GitHub: [@Zk47T](https://github.com/Zk47T)
+
+If this saved you time, a ⭐ on the repo or a visit to the blog is appreciated.
 
 Build and boot **Android Automotive OS (AAOS)** on the NXP **FRDM-IMX95** (15×15) using the
 `imx-automotive-16.0.0_1.3.0` BSP — which officially targets only the **i.MX95 EVK** (19×19).
@@ -441,14 +448,7 @@ issue (Mali is SoC-level). Check overlays:
 | ML User Guide for Android | UG10338 |
 | Release Notes | RN00227 |
 
----
 
-## Author
-
-**Nguyen Minh Tien** — <zizuzacker@gmail.com>
-Blog: <https://embeddedlinux.blog/> · GitHub: [@Zk47T](https://github.com/Zk47T)
-
-If this saved you time, a ⭐ on the repo or a visit to the blog is appreciated.
 
 ## License
 
