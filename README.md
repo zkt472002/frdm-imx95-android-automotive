@@ -431,20 +431,6 @@ issue (Mali is SoC-level). Check overlays:
 
 ---
 
-## AGL vs Android Automotive (why this port was easier)
-
-| Aspect | AGL (Yocto) | Android Automotive |
-|---|---|---|
-| NXP official support | Community port | **Yes** (NXP ships `evk_95_car`) |
-| Layer/version mismatch | Severe | None (single integrated BSP) |
-| FRDM U-Boot defconfig | Create from scratch | Exists |
-| FRDM kernel DTB | Verify/patch | Already in tree |
-| GPU | Mesa software render | **Mali proprietary (HW accel)** |
-| Build system | BitBake | Soong/Make |
-| Effort | ~3 weeks | **~3–5 days** (mostly config) |
-
----
-
 ## NXP documents
 
 | Document | ID |
